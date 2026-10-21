@@ -148,6 +148,7 @@ mark{background:color-mix(in srgb,var(--gold) 40%,transparent);color:inherit;bor
 
   <nav class="tabs" role="tablist">
     <button role="tab" id="tabA" aria-selected="true" aria-controls="viewA" type="button">Asistente</button>
+    <button role="tab" id="tabC" aria-selected="false" aria-controls="viewC" type="button">Convocatoria PDF</button>
     <button role="tab" id="tabR" aria-selected="false" aria-controls="viewR" type="button">Reglamento FEMEBE</button>
   </nav>
 
@@ -176,6 +177,32 @@ mark{background:color-mix(in srgb,var(--gold) 40%,transparent);color:inherit;bor
     <div class="foot"><span>Formar. Competir. Trascender.</span><button class="linkish" id="writeUs" type="button">¿No encuentras tu respuesta? Escríbenos</button></div>
   </div>
   </div>
+
+  <section id="viewC" class="rg" role="tabpanel" hidden>
+    <div class="rg-top">
+      <p>Convocatoria oficial del Torneo Desarrollo 2026, emitida el 10 de octubre de 2026. Son 3 hojas.</p>
+      <a class="btn" href="convocatoria/Convocatoria_Torneo_Desarrollo_2026.pdf" target="_blank" rel="noopener">Abrir PDF completo</a>
+    </div>
+    <div class="hit">
+      <span class="pg">Actualizaciones posteriores a este PDF</span>
+      <p>El torneo inicia el <b>jueves 22 de octubre de 2026</b>. Los juegos son los <b>miércoles, jueves y viernes</b> de 4:00 a 7:00 pm. El formato de las <b>finales</b> se determinará en función del número de equipos inscritos.</p>
+    </div>
+    <form class="rg-search" id="cvForm">
+      <label for="cvQ" hidden>Buscar en la convocatoria</label>
+      <input id="cvQ" type="search" autocomplete="off" placeholder="Busca en la convocatoria: forfeit, umpire, inscripción…">
+      <button type="submit">Buscar</button>
+    </form>
+    <div class="hits" id="cvHits" aria-live="polite"></div>
+    <div class="caps" id="cvCaps"></div>
+    <div class="viewer" id="cvViewer">
+      <div class="bar">
+        <button class="btn" id="cPrev" type="button">Anterior</button>
+        <span id="cLabel">Hoja 1 de 3</span>
+        <button class="btn" id="cNext" type="button">Siguiente</button>
+      </div>
+      <img id="cImg" alt="Convocatoria Torneo Desarrollo 2026, hoja 1" loading="lazy">
+    </div>
+  </section>
 
   <section id="viewR" class="rg" role="tabpanel" hidden>
     <div class="rg-top">
@@ -315,21 +342,24 @@ const log=document.getElementById("log");
 function add(html,who,src){const d=document.createElement("div");d.className="msg "+who;d.innerHTML=html+(src?`<span class="src">Fuente: ${src}</span>`:"");log.appendChild(d);d.scrollIntoView({block:"end",behavior:"smooth"});return d}
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function answer(e,q){
-  if(e){const html=e.a.map(p=>p.startsWith("<ul")?p:`<p>${p}</p>`).join("");add(html,"bot",e.s);
+  if(e){const html=e.a.map(p=>p.startsWith("<ul")?p:`<p>${p}</p>`).join("");const d=add(html,"bot",e.s);
+    const SRC_PAGE={"Contactos":3,"Encabezado y Objetivos":1,"Encabezado y Rol de juegos":1,"Expulsiones":3,"Forfeit":2,"Inscripciones y cuotas":2,"Junta previa":1,"Otros aspectos / Apelaciones":3,"Otros aspectos del reglamento":3,"Premiación":2,"Protocolo y lineamientos":3,"Reglamento de juegos / Cuotas":1,"Reglamento de juegos / Transitorio":1,"Reglamento de juegos":1,"Reglamento de pitcheo":2,"Rol de juegos / Cuotas / Protocolo":1,"Rol de juegos / Pelota oficial":2,"Rol de juegos":1,"Sistema de desempate":2};
+    const pg=SRC_PAGE[e.s];
+    if(pg)d.insertAdjacentHTML("beforeend",`<button class="linkish" type="button" data-cv="${pg}">Ver en el PDF de la convocatoria</button>`);
     if(voiceOn)speak(sentences(plain(html)));else pulse();return}
   const cv=convSearch(q||"");
   if(cv.length){const m="Esto es lo que dice la convocatoria sobre eso:";
-    add(`<p>${m}</p>`+cv.map(h=>`<div class="hit"><span class="pg">Convocatoria · ${esc(h.t)}</span><p>${h.html}</p></div>`).join("")+`<p style="margin-top:8px">¿No era lo que buscabas? <button class="linkish" type="button" data-rg="${esc(q)}">Buscar en el reglamento FEMEBE</button> · <button class="linkish" type="button" data-ask="${esc(q)}">Mandar mi pregunta a la liga</button></p>`,"bot");
+    add(`<p>${m}</p>`+cv.map(h=>`<div class="hit"><span class="pg">Convocatoria · ${esc(h.t)}</span><p>${h.html}</p><button class="linkish" type="button" data-cv="${CV_PAGE_OF[h.t]||1}">Ver en el PDF</button></div>`).join("")+`<p style="margin-top:8px">¿No era lo que buscabas? <button class="linkish" type="button" data-rg="${esc(q)}">Buscar en el reglamento FEMEBE</button> · <button class="linkish" type="button" data-ask="${esc(q)}">Mandar mi pregunta a la liga</button></p>`,"bot");
     if(voiceOn)speak([m,...cv.map(h=>plain(h.html))]);else pulse();return}
   rgFallback(q);
 }
-function convSearch(q){
+function convSearch(q,max){
   const terms=norm(q).split(/\s+/).filter(x=>x.length>3&&!STOP.has(x));if(!terms.length)return[];
   const out=[];
   CONVOCATORIA.forEach(s=>sentences(s.x).forEach(sen=>{const n=norm(sen);let c=0;for(const t of terms){const st=t.length>5?t.slice(0,t.length-1):t;if(n.includes(st))c++}
     if(c>=Math.min(2,terms.length))out.push({t:s.t,c,sen})}));
   out.sort((a,b)=>b.c-a.c);
-  return out.slice(0,3).map(o=>{let h=esc(o.sen);for(const t of terms){const st=t.length>5?t.slice(0,t.length-1):t;h=h.replace(new RegExp("("+st.split("").map(c=>({a:"[aá]",e:"[eé]",i:"[ií]",o:"[oó]",u:"[uúü]",n:"[nñ]"}[c]||c)).join("")+"\\w*)","gi"),"<mark>$1</mark>")}return{t:o.t,html:h}});
+  return out.slice(0,max||3).map(o=>{let h=esc(o.sen);for(const t of terms){const st=t.length>5?t.slice(0,t.length-1):t;h=h.replace(new RegExp("("+st.split("").map(c=>({a:"[aá]",e:"[eé]",i:"[ií]",o:"[oó]",u:"[uúü]",n:"[nñ]"}[c]||c)).join("")+"\\w*)","gi"),"<mark>$1</mark>")}return{t:o.t,html:h}});
 }
 function rgFallback(q){
   rgLoad().then(()=>{const hits=rgSearch(q||"",2);
@@ -378,6 +408,20 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-ask]");if(
 const sugg=["¿Cuánto cuesta inscribirse?","Reglas para nacidos en 2009","¿Qué pasa si no nos presentamos?","¿Quién juega las finales?","Límites de pitcheo","¿Cuáles son los premios?","¿Cuántas visitas al montículo?"];
 const ch=document.getElementById("chips");sugg.forEach(s=>{const b=document.createElement("button");b.type="button";b.textContent=s;b.onclick=()=>ask(s);ch.appendChild(b)});
 
+/* ===== Convocatoria PDF ===== */
+const CV_SECC=[["Hoja 1","Categorías, objetivos, junta previa, reglamento de juegos y rol de juegos",1],["Hoja 2","Knockout, forfeit, pelota, premiación, desempate, cuotas y pitcheo",2],["Hoja 3","Sanciones de pitcheo, apelaciones, expulsiones, protocolo y contactos",3]];
+const CV_PAGE_OF={"Presentación":1,"Objetivos":1,"Junta previa":1,"Reglamento de juegos":1,"Rol de juegos":1,"Forfeit":2,"Pelota oficial":2,"Premiación":2,"Sistema de desempate":2,"Inscripciones y cuotas":2,"Reglamento de pitcheo":2,"Otros aspectos del reglamento":3,"Apelaciones y reclamaciones":3,"Expulsiones":3,"Protocolo en las instalaciones":3,"Transitorio":3};
+let cvPage=1;
+function showCv(p){cvPage=Math.max(1,Math.min(3,p));const img=document.getElementById("cImg");img.src=`convocatoria/c${cvPage}.jpg`;img.alt=`Convocatoria Torneo Desarrollo 2026, hoja ${cvPage}`;document.getElementById("cLabel").textContent=`Hoja ${cvPage} de 3`}
+function openCv(p){setTab("C");showCv(p);document.getElementById("cvViewer").scrollIntoView({behavior:"smooth",block:"start"})}
+document.getElementById("cPrev").onclick=()=>showCv(cvPage-1);
+document.getElementById("cNext").onclick=()=>showCv(cvPage+1);
+const cvCaps=document.getElementById("cvCaps");
+CV_SECC.forEach(([c,n,p])=>{const b=document.createElement("button");b.type="button";b.innerHTML=`<b>${c}</b><span>${n}</span>`;b.onclick=()=>openCv(p);cvCaps.appendChild(b)});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-cv]");if(b)openCv(+b.dataset.cv)});
+document.getElementById("cvForm").addEventListener("submit",e=>{e.preventDefault();const q=document.getElementById("cvQ").value.trim(),out=document.getElementById("cvHits");if(!q){out.innerHTML="";return}
+  const hits=convSearch(q,6);out.innerHTML=hits.length?hits.map(h=>`<div class="hit"><span class="pg">${esc(h.t)} · hoja ${CV_PAGE_OF[h.t]||1}</span><p>${h.html}</p><button class="linkish" type="button" data-cv="${CV_PAGE_OF[h.t]||1}">Ver esta hoja</button></div>`).join(""):`<p class="small">No encontré “${esc(q)}” en la convocatoria. Prueba con otra palabra o revisa el reglamento FEMEBE.</p>`});
+
 /* ===== Reglamento FEMEBE ===== */
 const RG_PAGES=128,RG_OFFSET=4;
 const CAPS=[["Índice","Contenido",3],["Cap. I","De los Estados",5],["Cap. II","Directivos y técnicos",8],["Cap. III","De los jugadores",9],["Cap. IV","De los campeonatos",16],["Cap. V","Pre-iniciación, iniciación 7 nones y femenil",23],["Cap. VI","Disposiciones generales para todas las categorías",35],["Cap. VII","Iniciación 7-8, pre-infantil e infantil femenil",81],["Cap. VIII","Categorías femeniles",91],["Cap. IX","Primera fuerza",99],["Cap. X","Máster",101],["Cap. XI","Supermáster y granmáster",103],["Cap. XII","Código de conducta",105],["Anexos","Round robin, categorías por año, medidas de campos",112],["Índice","Índice alfabético",126]];
@@ -411,11 +455,13 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-page]");if
 document.getElementById("rgForm").addEventListener("submit",async e=>{e.preventDefault();const q=document.getElementById("rgQ").value.trim(),out=document.getElementById("rgHits");
   if(!q){out.innerHTML="";return}out.innerHTML='<p class="small">Buscando…</p>';await rgLoad();
   const hits=rgSearch(q,8);out.innerHTML=hits.length?`<p class="small">${hits.length} resultado${hits.length>1?"s":""} para “${esc(q)}”</p>`+hits.map(hitHTML).join(""):`<p class="small">No encontré “${esc(q)}” en el reglamento. Prueba con otra palabra o revisa el índice de capítulos.</p>`});
-function setTab(k){const a=k==="A";document.getElementById("viewA").hidden=!a;document.getElementById("viewR").hidden=a;
-  document.getElementById("tabA").setAttribute("aria-selected",a);document.getElementById("tabR").setAttribute("aria-selected",!a);
-  if(!a){if(!document.getElementById("vImg").src)showPage(rgPage);rgLoad()}}
+function setTab(k){["A","C","R"].forEach(x=>{document.getElementById("view"+x).hidden=x!==k;document.getElementById("tab"+x).setAttribute("aria-selected",x===k)});
+  if(k==="R"){if(!document.getElementById("vImg").src)showPage(rgPage);rgLoad()}
+  if(k==="C"&&!document.getElementById("cImg").src)showCv(cvPage)}
 document.getElementById("tabA").onclick=()=>setTab("A");
 document.getElementById("tabR").onclick=()=>setTab("R");
+document.getElementById("tabC").onclick=()=>setTab("C");
+if(location.hash==="#convocatoria")setTab("C");
 if(location.hash==="#reglamento")setTab("R");
 
 add("<p>¡Hola! Soy el asistente de la <b>LDB Chihuahua</b> para el <b>Torneo Desarrollo 2026</b>. Toca <b>Leer la convocatoria</b> para escucharla completa, o escribe tu duda abajo. También busco en el <b>reglamento FEMEBE</b>.</p>","bot");
