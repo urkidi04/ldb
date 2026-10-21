@@ -143,7 +143,7 @@ mark{background:color-mix(in srgb,var(--gold) 40%,transparent);color:inherit;bor
     <div><dt>Categorías</dt><dd>2009 · 2010 · 2011-2012</dd></div>
     <div><dt>Inicio</dt><dd>Jue 22 oct 2026</dd></div>
     <div><dt>Sede</dt><dd>Campos de la Villa</dd></div>
-    <div><dt>Horario</dt><dd>4:00 – 7:00 pm</dd></div>
+    <div><dt>Días y horario</dt><dd>Mié, jue y vie · 4–7 pm</dd></div>
   </dl>
 
   <nav class="tabs" role="tablist">
@@ -213,13 +213,13 @@ const CONFIG = {
 };
 
 const KB=[
- {t:"Fechas, sede y horario",k:"fecha inicio empieza cuando arranca sede donde campo campos villa estadio cesar vega horario hora dia dias jornada semana miercoles jueves viernes",a:["El torneo arranca el <b>jueves 22 de octubre de 2026</b>.","Se juega <b>una jornada por semana</b>, miércoles, jueves o viernes, de <b>4:00 a 7:00 pm</b>, en los Campos de la Villa (Estadio y César Vega)."],s:"Encabezado y Rol de juegos"},
+ {t:"Fechas, sede y horario",k:"fecha inicio empieza cuando arranca sede donde campo campos villa estadio cesar vega horario hora dia dias jornada semana miercoles jueves viernes",a:["El torneo arranca el <b>jueves 22 de octubre de 2026</b>.","Los juegos son los <b>miércoles, jueves y viernes</b>, de <b>4:00 a 7:00 pm</b>, en los Campos de la Villa (Estadio y César Vega)."],s:"Encabezado y Rol de juegos"},
  {t:"Categorías",k:"categoria categorias edad edades nacidos año años 2009 2010 2011 2012 quien puede jugar",a:["Participan jugadores <b>nacidos en 2009, 2010 y 2011-2012</b>.","Los de 2009 tienen límites: máximo 6 en el roster y 4 en el terreno a la vez. Pregúntame por “reglas 2009” si quieres el detalle."],s:"Encabezado y Objetivos"},
  {t:"Reglas para nacidos en 2009",k:"2009 limite mayores grandes cuantos 2009 terreno roster lanzar lanzamientos pitcheo 40",a:["Cada equipo puede tener <b>hasta 6 nacidos en 2009 en el roster</b> y <b>solo 4 en el terreno</b> al mismo tiempo.","Un pitcher 2009 puede tirar <b>máximo 40 lanzamientos</b> por juego, y <b>no puede lanzar otro 2009</b> en ese mismo juego."],s:"Reglamento de juegos"},
  {t:"Tamaño del roster",k:"roster jugadores cuantos minimo maximo equipo integrantes 12 18 entrenadores coaches numero uniforme",a:["Cada equipo lleva <b>de 12 a 18 jugadores</b>, con número en el uniforme, y <b>hasta tres entrenadores</b> dentro del terreno."],s:"Reglamento de juegos"},
  {t:"Altas, bajas y doble roster",k:"subir bajar alta altas baja bajas agregar jugador cambio dos equipos doble roster registrar nuevo",a:["Se pueden subir y bajar jugadores en cualquier momento <b>hasta un mes antes de las finales</b>.","Un alta después de la primera jornada cuesta <b>$350</b>.","Si un jugador aparece en el roster de dos equipos, se queda con el equipo con el que <b>juegue su primer partido</b>."],s:"Reglamento de juegos / Cuotas"},
- {t:"Elegibilidad para finales",k:"elegible elegibilidad finales playoffs participar 50 porciento jornadas minimo jugar finales",a:["Para jugar las series finales, un jugador debe haber participado en <b>al menos el 50 % de las jornadas</b>; si no da entero se redondea hacia abajo.","Ejemplo de la convocatoria: con 5 jornadas, el mínimo es <b>2</b>."],s:"Reglamento de juegos"},
- {t:"Sistema de competencia",k:"sistema formato competencia todos contra todos vuelta clasifican clasificacion playoffs semifinal final cuantos equipos lugares entradas duracion siete",a:["Es <b>todos contra todos a una vuelta</b>. Clasifican a playoffs los <b>4 primeros lugares</b>.","Los juegos duran <b>siete entradas</b>."],s:"Reglamento de juegos"},
+ {t:"Elegibilidad para finales",k:"elegible elegibilidad participar 50 porciento jornadas minimo jugar finales",a:["Para jugar las series finales, un jugador debe haber participado en <b>al menos el 50 % de las jornadas</b>; si no da entero se redondea hacia abajo.","Ejemplo de la convocatoria: con 5 jornadas, el mínimo es <b>2</b>."],s:"Reglamento de juegos"},
+ {t:"Sistema de competencia",k:"sistema formato competencia todos contra todos vuelta clasifican clasificacion playoffs semifinal final finales formato series cuantos equipos lugares entradas duracion siete",a:["La fase regular es <b>todos contra todos a una vuelta</b>.","El formato de las <b>finales</b> (cuántos equipos clasifican y cuántos juegos se disputan) se determinará en función del <b>número de equipos inscritos</b>.","Los juegos duran <b>siete entradas</b>."],s:"Reglamento de juegos"},
  {t:"Knockout",k:"knockout nocaut ko super ventaja carreras 10 15 mercy",a:["<b>Knockout:</b> en la 5ª entrada con ventaja de 10 carreras.","<b>Super knockout:</b> en la 4ª entrada con ventaja de 15 o más carreras."],s:"Rol de juegos"},
  {t:"Umpires",k:"umpire umpires ampayer arbitro arbitros cuantos pago cuota 600",a:["Habrá <b>un umpire</b> en la fase clasificatoria y <b>dos</b> en semifinal y final.","La cuota es de <b>$600 por equipo y por juego</b>.","Los umpires son la máxima autoridad en el juego. Solo el manager puede pedirles, con respeto, revisar una jugada."],s:"Rol de juegos / Cuotas / Protocolo"},
  {t:"Permisos para descansar",k:"permiso descanso descansar faltar no ir avisar ausencia posponer",a:["Cada equipo tiene <b>un solo permiso</b> para descansar una jornada, avisando con <b>una semana de anticipación</b>. Si no avisa, pierde por forfeit."],s:"Rol de juegos"},
@@ -240,11 +240,11 @@ const KB=[
 ];
 
 const CONVOCATORIA=[
- {t:"Presentación",x:"Convocatoria del Torneo Desarrollo 2026, Chihuahua, a 10 de octubre de 2026. Categorías: nacidos en 2009, 2010 y 2011-2012. Inicia el jueves 22 de octubre de 2026 en los Campos de la Villa, Estadio y César Vega, de 4 a 7 de la tarde."},
+ {t:"Presentación",x:"Convocatoria del Torneo Desarrollo 2026, Chihuahua, a 10 de octubre de 2026. Categorías: nacidos en 2009, 2010 y 2011-2012. Inicia el jueves 22 de octubre de 2026 en los Campos de la Villa, Estadio y César Vega, de 4 a 7 de la tarde, los miércoles, jueves y viernes."},
  {t:"Objetivos",x:"Establecer un torneo para los años de nacimiento 2009, 2010 y 2011-2012, para que los beisbolistas de estas edades tengan más oportunidades y puedan desarrollar sus habilidades y destrezas. A esto se suma la promoción del béisbol municipal de forma sana y sin fines de lucro."},
  {t:"Junta previa",x:"Se realizará en fecha por definir, a las 20:00 horas, vía virtual. Los asuntos serán de carácter informativo. La presidirá un representante del Comité Organizador junto con el director técnico de Competencia, y se darán a conocer los detalles finales del evento."},
- {t:"Reglamento de juegos",x:"El torneo se juega bajo las reglas oficiales de la FEMEBE, con algunos ajustes propios de la competencia. Los equipos tendrán un mínimo de 12 y un máximo de 18 jugadores, con número en el uniforme, más tres entrenadores dentro del terreno. Solo podrá haber 4 jugadores nacidos en 2009 en el terreno de juego, y 6 en el roster; el resto serán 2010, 2011 y 2012. Los nacidos en 2009 solo podrán lanzar 40 lanzamientos en un juego, y no podrá lanzar otro nacido en 2009 en el mismo juego. Para ser elegibles en las series finales, los jugadores deberán participar en al menos el 50 por ciento de las jornadas; si el resultado no es entero, se toma el número inferior. Con 5 jornadas, el mínimo es de 2 jornadas. Se podrán subir y bajar jugadores en cualquier momento, hasta un mes antes de iniciar las finales. Los jugadores que estén en el roster de dos equipos se quedarán con el equipo con el que jueguen su primer partido. El sistema de competencia es todos contra todos a una vuelta, y clasifican a playoffs los 4 primeros lugares. Los juegos durarán siete entradas."},
- {t:"Rol de juegos",x:"Se jugará una jornada por semana, los miércoles, jueves o viernes de 4 a 7 de la tarde, en los campos de la Villa. Cada equipo podrá solicitar un solo permiso para descansar una jornada, avisando con una semana de anticipación; de lo contrario, perderá por forfeit. Habrá un umpire en la etapa clasificatoria y dos en la semifinal y la final. El knockout es en 5 entradas con ventaja de 10 carreras, y el super knockout en 4 entradas con ventaja de 15 o más carreras. El cátcher está libre y podrá jugar en cada partido, pero no podrá lanzar en el juego en el que actúe como receptor; y un lanzador que haya terminado su labor no podrá pasar a receptor. Se podrán usar bats de madera, y se permite el bateador designado, regla Ohtani."},
+ {t:"Reglamento de juegos",x:"El torneo se juega bajo las reglas oficiales de la FEMEBE, con algunos ajustes propios de la competencia. Los equipos tendrán un mínimo de 12 y un máximo de 18 jugadores, con número en el uniforme, más tres entrenadores dentro del terreno. Solo podrá haber 4 jugadores nacidos en 2009 en el terreno de juego, y 6 en el roster; el resto serán 2010, 2011 y 2012. Los nacidos en 2009 solo podrán lanzar 40 lanzamientos en un juego, y no podrá lanzar otro nacido en 2009 en el mismo juego. Para ser elegibles en las series finales, los jugadores deberán participar en al menos el 50 por ciento de las jornadas; si el resultado no es entero, se toma el número inferior. Con 5 jornadas, el mínimo es de 2 jornadas. Se podrán subir y bajar jugadores en cualquier momento, hasta un mes antes de iniciar las finales. Los jugadores que estén en el roster de dos equipos se quedarán con el equipo con el que jueguen su primer partido. La fase regular es todos contra todos a una vuelta. El formato de las finales se determinará en función del número de equipos inscritos. Los juegos durarán siete entradas."},
+ {t:"Rol de juegos",x:"Los juegos serán los miércoles, jueves y viernes, de 4 a 7 de la tarde, en los campos de la Villa. Cada equipo podrá solicitar un solo permiso para descansar una jornada, avisando con una semana de anticipación; de lo contrario, perderá por forfeit. Habrá un umpire en la etapa clasificatoria y dos en la semifinal y la final. El knockout es en 5 entradas con ventaja de 10 carreras, y el super knockout en 4 entradas con ventaja de 15 o más carreras. El cátcher está libre y podrá jugar en cada partido, pero no podrá lanzar en el juego en el que actúe como receptor; y un lanzador que haya terminado su labor no podrá pasar a receptor. Se podrán usar bats de madera, y se permite el bateador designado, regla Ohtani."},
  {t:"Forfeit",x:"Al equipo que pierda por forfeit se le registrará el juego perdido con marcador oficial de 7 a 0. Si un equipo no se presenta, pagará una multa de mil pesos."},
  {t:"Pelota oficial",x:"Se utilizará la pelota America 2000, America 54 o America 52."},
  {t:"Premiación",x:"Habrá un apoyo económico de cinco mil pesos al primer lugar y tres mil pesos al segundo lugar. La premiación será al terminar el juego final."},
@@ -317,8 +317,23 @@ const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&qu
 function answer(e,q){
   if(e){const html=e.a.map(p=>p.startsWith("<ul")?p:`<p>${p}</p>`).join("");add(html,"bot",e.s);
     if(voiceOn)speak(sentences(plain(html)));else pulse();return}
+  const cv=convSearch(q||"");
+  if(cv.length){const m="Esto es lo que dice la convocatoria sobre eso:";
+    add(`<p>${m}</p>`+cv.map(h=>`<div class="hit"><span class="pg">Convocatoria · ${esc(h.t)}</span><p>${h.html}</p></div>`).join("")+`<p style="margin-top:8px">¿No era lo que buscabas? <button class="linkish" type="button" data-rg="${esc(q)}">Buscar en el reglamento FEMEBE</button> · <button class="linkish" type="button" data-ask="${esc(q)}">Mandar mi pregunta a la liga</button></p>`,"bot");
+    if(voiceOn)speak([m,...cv.map(h=>plain(h.html))]);else pulse();return}
+  rgFallback(q);
+}
+function convSearch(q){
+  const terms=norm(q).split(/\s+/).filter(x=>x.length>3&&!STOP.has(x));if(!terms.length)return[];
+  const out=[];
+  CONVOCATORIA.forEach(s=>sentences(s.x).forEach(sen=>{const n=norm(sen);let c=0;for(const t of terms){const st=t.length>5?t.slice(0,t.length-1):t;if(n.includes(st))c++}
+    if(c>=Math.min(2,terms.length))out.push({t:s.t,c,sen})}));
+  out.sort((a,b)=>b.c-a.c);
+  return out.slice(0,3).map(o=>{let h=esc(o.sen);for(const t of terms){const st=t.length>5?t.slice(0,t.length-1):t;h=h.replace(new RegExp("("+st.split("").map(c=>({a:"[aá]",e:"[eé]",i:"[ií]",o:"[oó]",u:"[uúü]",n:"[nñ]"}[c]||c)).join("")+"\\w*)","gi"),"<mark>$1</mark>")}return{t:o.t,html:h}});
+}
+function rgFallback(q){
   rgLoad().then(()=>{const hits=rgSearch(q||"",2);
-    if(hits.length){const m="No viene en la convocatoria, pero encontré esto en el reglamento FEMEBE, que aplica al torneo:";
+    if(hits.length){const m="No lo encontré en la convocatoria. En el reglamento FEMEBE, que aplica al torneo, encontré esto:";
       add(`<p>${m}</p>`+hits.map(hitHTML).join("")+`<p style="margin-top:8px">¿No era lo que buscabas? <button class="linkish" type="button" data-ask="${esc(q)}">Mandar mi pregunta a la liga</button></p>`,"bot");
       if(voiceOn)speak([m]);else pulse();return}
     const msg="No encontré eso en la convocatoria ni en el reglamento. Déjame tus datos y le mando tu pregunta a la liga por correo.";
@@ -358,6 +373,7 @@ async function send(n){
 function ask(q){q=q.trim();if(!q)return;add(`<p>${esc(q)}</p>`,"me");setTimeout(()=>answer(find(q),q),250)}
 document.getElementById("ask").addEventListener("submit",ev=>{ev.preventDefault();const i=document.getElementById("q");ask(i.value);i.value=""});
 document.getElementById("writeUs").onclick=()=>showForm("","Escribe tu pregunta y se la mando a la liga por correo.");
+document.addEventListener("click",e=>{const r=e.target.closest("[data-rg]");if(r){r.disabled=true;rgFallback(r.dataset.rg)}});
 document.addEventListener("click",e=>{const b=e.target.closest("[data-ask]");if(b){b.disabled=true;showForm(b.dataset.ask,"Va. Déjame tus datos y le mando tu pregunta a la liga por correo.")}});
 const sugg=["¿Cuánto cuesta inscribirse?","Reglas para nacidos en 2009","¿Qué pasa si no nos presentamos?","¿Quién juega las finales?","Límites de pitcheo","¿Cuáles son los premios?","¿Cuántas visitas al montículo?"];
 const ch=document.getElementById("chips");sugg.forEach(s=>{const b=document.createElement("button");b.type="button";b.textContent=s;b.onclick=()=>ask(s);ch.appendChild(b)});
