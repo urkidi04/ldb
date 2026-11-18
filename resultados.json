@@ -21,8 +21,8 @@
    "visita": "talentos",
    "cl": null,
    "cv": null,
-   "estado": "",
-   "nota": ""
+   "estado": "suspendido",
+   "nota": "No se jugó"
   },
   {
    "fecha": "2026-11-05",
@@ -41,10 +41,10 @@
    "campo": "Campo César Vega",
    "local": "yankees",
    "visita": "uchb",
-   "cl": null,
-   "cv": null,
-   "estado": "",
-   "nota": ""
+   "cl": 7,
+   "cv": 0,
+   "estado": "forfeit",
+   "nota": "Gana Yankees por forfeit (7-0)"
   },
   {
    "fecha": "2026-11-06",
@@ -52,8 +52,8 @@
    "campo": "Estadio Villa",
    "local": "talentos",
    "visita": "dorados-b",
-   "cl": null,
-   "cv": null,
+   "cl": 19,
+   "cv": 1,
    "estado": "",
    "nota": ""
   },
