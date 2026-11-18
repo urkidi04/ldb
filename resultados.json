@@ -1,0 +1,105 @@
+{
+ "_instrucciones": "Para capturar un resultado escribe las carreras en cl (local) y cv (visita). estado puede ser '', 'suspendido' o 'forfeit'. Fechas en formato AAAA-MM-DD.",
+ "actualizado": "2026-11-18",
+ "juegos": [
+  {
+   "fecha": "2026-10-29",
+   "hora": "4:00 pm",
+   "campo": "Estadio Villa",
+   "local": "dorados-a",
+   "visita": "guerreros",
+   "cl": null,
+   "cv": null,
+   "estado": "suspendido",
+   "nota": "Cancelado por clima y estado del campo"
+  },
+  {
+   "fecha": "2026-10-30",
+   "hora": "4:00 pm",
+   "campo": "Estadio Villa",
+   "local": "dorados-b",
+   "visita": "talentos",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-05",
+   "hora": "4:00 pm",
+   "campo": "Estadio Villa",
+   "local": "dorados-a",
+   "visita": "guerreros",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-05",
+   "hora": "4:00 pm",
+   "campo": "Campo César Vega",
+   "local": "yankees",
+   "visita": "uchb",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-06",
+   "hora": "4:00 pm",
+   "campo": "Estadio Villa",
+   "local": "talentos",
+   "visita": "dorados-b",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-06",
+   "hora": "4:00 pm",
+   "campo": "Campo César Vega",
+   "local": "bachilleres",
+   "visita": "yankees",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-18",
+   "hora": "4:30 pm",
+   "campo": "Estadio Almanza",
+   "local": "uchb",
+   "visita": "dorados-a",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-19",
+   "hora": "4:00 pm",
+   "campo": "Campo César Vega",
+   "local": "guerreros",
+   "visita": "dorados-b",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-20",
+   "hora": "4:00 pm",
+   "campo": "Campo César Vega",
+   "local": "yankees",
+   "visita": "talentos",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  }
+ ]
+}
