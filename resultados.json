@@ -78,6 +78,39 @@
    "cv": null,
    "estado": "",
    "nota": ""
+  },
+  {
+   "fecha": "2026-11-25",
+   "hora": "4:30 pm",
+   "campo": "Estadio Almanza",
+   "local": "uchb",
+   "visita": "bachilleres",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-26",
+   "hora": "4:00 pm",
+   "campo": "Estadio Villa",
+   "local": "guerreros",
+   "visita": "yankees",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
+  },
+  {
+   "fecha": "2026-11-27",
+   "hora": "4:00 pm",
+   "campo": "Estadio Villa",
+   "local": "talentos",
+   "visita": "dorados-a",
+   "cl": null,
+   "cv": null,
+   "estado": "",
+   "nota": ""
   }
  ]
 }
