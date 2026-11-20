@@ -1,6 +1,6 @@
 // LDB Chihuahua: funciona sin señal. La página y los resultados se buscan primero en internet
 // (para ver siempre lo más nuevo) y, si no hay conexión, se usan los guardados.
-const CACHE = 'ldb-v1';
+const CACHE = 'ldb-v2';
 const PRECACHE = ['./', 'index.html', 'manifest.webmanifest', 'resultados.json',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',
   'equipos/dorados.png', 'equipos/guerreros.png', 'equipos/bachilleres.png',
